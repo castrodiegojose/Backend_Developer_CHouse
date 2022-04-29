@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador IP - Cisco</title>
+    <!-- FONT OSWALD-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/CSS/estilo_index.css">
+    <link rel="stylesheet" href="/CSS/estilo_Modal.css">
+    
+</head>
+<body>
+    
+    <h1 id="Titulo">COMPARADOR IP - CISCO</h1>  
+    
+    <nav>
+        <a href="/Comparador_IP.html" class="nav-enlace">Chequeo de duplicidad de IP</a>
+        
+        <button type="button" id="botonBusqueda" class="nav-enlace">Buscar Sito</button>
+    </nav>
+
+    <div id="formulario_busqueda" style="display:none">
+        <h1 class = "formulario_titulo">Ingrese Cell ID</h1>
+            <form id="formBusqueda" action="cellId">
+                
+                <label for="cellId" class="formulario_label" >Recordar probar con las 2 nomenclaturas</label>
+                <input type="text" class="formulario_input" id="cellId" placeholder="Cell ID" name="cellId">
+                <div id="mensajeCellId" class="errores">Ingrese bien el Cell ID</div>
+                <button class="boton_form" id="botonBuscar" type="button">Buscar</button>
+                <button class="boton_form" id="botonCancelarCellid" type="button">Cancelar</button>
+            </form>
+        
+    </div>
+
+    <div id="mensaje"></div>
+    
+    
+    <footer></footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/JS/funciones.js"></script>
+    <script src="/JS/Comparador_IP.js"></script>
+
+   
+</body>
+</html>

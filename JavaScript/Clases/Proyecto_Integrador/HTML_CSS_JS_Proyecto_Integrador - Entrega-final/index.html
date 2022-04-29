@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador IP - Cisco</title>
+    <!-- FONT OSWALD-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/CSS/estilo_index.css">
+    <link rel="stylesheet" href="/CSS/estilo_Modal.css">
+    <link rel="stylesheet" href="/ICONS/css/fontello.css">
+    
+</head>
+<body>
+    <header>        
+        <nav class="menu">
+            <div id="tituloPrincipal" style="display: none;">COMPARADOR_IP CISCO</div>
+            <ul>
+                <li class="submenu"><a href="#"><span class= "icon-menu"></span></a>
+                    <ul>
+                        <li><a href="#" id ="botonChequeo">Chequeo duplicidad IP <span class="icon-resize-small":before></span></a></li>
+                        <li><a href="#" id ="botonBusqueda">Buscar Sitio <span class= "icon-search"></span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>  
+        
+        <div id="formularioIP" style="display: none;">
+            <h1 class = "formulario_titulo">Ingrese IP</h1>
+                <form id="form2" action="">
+                    <label for="ipAComparar" class="formulario_label">Ingrese Planilla IP</label>
+                    <input class="formulario_input" type="text" placeholder="Planilla IP" maxlength="" name="ipAComparar" id="ipAComparar">
+                    <div id="mensajeIpAcomparar" class="errores">Ingrese bien la IP</div>
+                    <button class="boton_form" id="botonIngreso" type="button">Ingresar</button>
+                    <button class="boton_form" id="botonCancelarIP" type="button">Cancelar</button>
+                </form>
+        </div>  
+    
+         
+        <div id="mensaje"></div>
+    
+        <div id="formulario" style="display:none">
+            <h1 class = "formulario_titulo">Ingrese los datos.</h1>
+                <form id ="form" action="InterfacesNuevas">
+    
+                    <label for="ipRouter" class="formulario_label" >IP Router</label>
+                    <input type="text" class="formulario_input" id="ipRouter" placeholder="IP Router">
+                    <div id="mensajeIpRouter" class="errores">Ingrese bien la IP del Router</div>
+    
+                    <label for="bdi" class="formulario_label" >Ingrese BDI</label>
+                    <input type="text" class="formulario_input" id="bdi" placeholder="BDI">
+                    <div id="mensajeBdi" class="errores">Ingrese bdi</div>
+                    
+                    <label for="descripcion" class="formulario_label">Ingrese descripcion de la Interface</label>
+                    <input type="text" class="formulario_input" id="descripcion" placeholder="Descripcion">
+                    <div id="mensajeDescripcion" class="errores">Ingrese la Descripcion</div>
+    
+                    <label for="ipInterface" class="formulario_label">Ingrese IP de la Interface</label>
+                    <input type="text" class="formulario_input" id="ipInterface" placeholder="IP Interface">
+                    <div id="mensajeIpInterface" class="errores">Ingrese bien la IP de la Interface</div>
+                  
+                    <label for="mascara" class="formulario_label">Ingrese mascara de la Interface</label>
+                    <input type="text" class="formulario_input" id="mascara" placeholder="Mascara">
+                    <div id="mensajeIpMascara" class="errores">Ingrese bien la IP de la Mascara</div>
+    
+                    
+                    <button class="boton_form" id="botonAceptar" type="button">Aceptar</button>
+                    <button class="boton_form" id="botonCancelar" type="button">Cancelar</button>
+                </form>
+            
+        </div>
+    
+            
+        
+    </header>
+    <div id="formulario_busqueda" style="display:none">
+        <h1 class = "formulario_titulo">Ingrese Cell ID</h1>
+            <form id="formBusqueda" action="cellId">
+                
+                <label for="cellId" class="formulario_label" >Recordar probar con las 2 nomenclaturas</label>
+                <input type="text" class="formulario_input" id="cellId" placeholder="Cell ID" name="cellId">
+                <div id="mensajeCellId" class="errores">Ingrese bien el Cell ID</div>
+                <button class="boton_form" id="botonBuscar" type="button">Buscar</button>
+                <button class="boton_form" id="botonCancelarCellid" type="button">Cancelar</button>
+            </form>
+        
+    </div>
+
+    <div id="mensaje"></div>
+    
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/JS/clase_backups.js"></script>
+    <script src="/JS/funciones.js"></script>
+    <script src="/JS/Comparador_IP.js"></script>
+
+   
+</body>
+</html>

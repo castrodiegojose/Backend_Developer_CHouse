@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- FONT OSWALD-->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
+     <title> Comparador de IPs Cisco</title>
+    <link rel="stylesheet" href="/CSS/estilo_Comparador_IP.css">
+    <link rel="stylesheet" href="/CSS/estilo_Modal.css">
+</head>
+<body>
+    
+   
+    <h1 id="Titulo">COMPARADOR IP - CISCO</h1>  
+    <h2 id="titulo">Comparador de IPs</h2> 
+    
+    <form id="form2" action="">
+        <label for="ipAComparar">Ingrese Planilla IP</label>
+        <input class="field" type="text" placeholder="Planilla IP" maxlength="" name="ipAComparar" id="ipAComparar">
+        <div id="mensajeIpAcomparar" class="errores">Ingrese bien la IP</div>
+        <button id="botonIngreso" type="button">Ingresar</button>
+    </form>
+
+   <!--<button id="cleaner" >Borrar Alertas</button>-->
+     
+    <div id="mensaje"></div>
+
+    <div id="formulario" style="display:none">
+        <h1 class = "formulario_titulo">Ingrese los datos.</h1>
+            <form id ="form" action="InterfacesNuevas">
+
+                <label for="ipRouter" class="formulario_label" >IP Router</label>
+                <input type="text" class="formulario_input" id="ipRouter">
+                <div id="mensajeIpRouter" class="errores">Ingrese bien la IP del Router</div>
+
+                <label for="bdi" class="formulario_label" >Ingrese BDI</label>
+                <input type="text" class="formulario_input" id="bdi">
+                <div id="mensajeBdi" class="errores">Ingrese bdi</div>
+                
+                <label for="descripcion" class="formulario_label">Ingrese descripcion</label>
+                <input type="text" class="formulario_input" id="descripcion">
+                <div id="mensajeDescripcion" class="errores">Ingrese la Descripcion</div>
+
+                <label for="ipInterface" class="formulario_label">Ingrese IP</label>
+                <input type="text" class="formulario_input" id="ipInterface">
+                <div id="mensajeIpInterface" class="errores">Ingrese bien la IP de la Interface</div>
+              
+                <label for="mascara" class="formulario_label">Ingrese mascara</label>
+                <input type="text" class="formulario_input" id="mascara">
+                <div id="mensajeIpMascara" class="errores">Ingrese bien la IP de la Mascara</div>
+
+                
+                <button class="boton_form" id="botonAceptar" type="button">Aceptar</button>
+                <button class="boton_form" id="botonCancelar" type="button">Cancelar</button>
+            </form>
+        
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="JS/clase_backups.js"></script>
+    <script src="/JS/funciones.js"></script>     
+    <script src="/JS/Comparador_IP.js"></script>
+
+    
+   
+    
+    
+</body>
+</html>

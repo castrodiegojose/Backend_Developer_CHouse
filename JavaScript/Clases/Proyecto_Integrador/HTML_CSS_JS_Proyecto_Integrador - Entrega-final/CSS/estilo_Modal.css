@@ -1,0 +1,66 @@
+/* MODAL */
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.459);
+  }
+  
+  .modal-content-ok {
+    width: 95%;
+    max-width: 500px;
+    padding: 40px;
+    position: relative;
+    background: rgb(140, 238, 120);
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .modal-content-notok {
+    width: 95%;
+    max-width: 500px;
+    padding: 40px;
+    position: relative;
+    background: rgb(236, 106, 106);
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .modal-btn-closed {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  #modal_btn_agregar {
+    position:absolute;
+    bottom: 5px;
+    align-content: center;
+    left: 175px;
+    background: rgb(42, 197, 42);
+    outline: none;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  .modal-title {
+    text-align: center;
+    font-size: 25px;
+  }
+  
+  .modal-description {
+    font-size: 17px;
+    color: rgb(61, 61, 61);
+  }
+  

@@ -1,0 +1,49 @@
+const fs \= require(‘fs’);
+
+class Contenedor {
+
+constructor(nombreArchivo) {
+
+this.nombreArchivo \= nombreArchivo;
+
+this.arrObjs \= [];
+
+}
+
+async save(obj) {
+
+try {
+
+// Leo el archivo para comprobar si tiene algo:
+
+let leoArchivo \= fs.readFileSync(‘./archivoBase.txt’, ‘utf-8’);
+
+// Si leoArchivo contiene algo, al this.arrayObjs lo reescribimos pasandole un nuevo array con la informacion del archivo.
+
+this.arrObjs \= JSON.parse(leoArchivo)
+
+// Agrego la nueva informacion que me pasan por parametro dentro del this.arrObjs
+
+this.arrObjs.push(obj)
+
+// Guardo el nuevo objeto en el archivo:
+
+fs.writeFileSync(this.nombreArchivo, JSON.stringify(this.arrObjs, null, 2))
+
+}
+
+catch (err) {
+
+console.log(‘Error al escribir archivo…’, err);
+
+}
+
+}
+
+}
+
+const prueba \= new Contenedor(‘./archivoBase.txt’)
+
+console.log(prueba)
+
+prueba.save({ nomrbre: “no funco” })
