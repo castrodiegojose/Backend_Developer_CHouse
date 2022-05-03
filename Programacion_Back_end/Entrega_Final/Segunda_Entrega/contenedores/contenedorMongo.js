@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
+import config from '../config.js'; 
 
 try {
-    mongoose.connect('mongodb://localhost:27017/mibase',{
+    mongoose.connect(config.mongoUrl,{
     useNewUrlParser: true,
     useUnifiedTopology: true
     });
@@ -36,7 +37,7 @@ export default class ContenedorMongo{
             this.array = await this.collection.find({_id: num});
             console.log(this.collection.find({_id: num}));
 
-            if (this.array) return this.array;    
+            if (this.array != []) return this.array;    
         
             return {Error:'No existe el ID'}
         }

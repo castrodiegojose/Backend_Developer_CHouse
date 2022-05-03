@@ -1,4 +1,5 @@
 export default {
     port: process.env.PORT || 8080,
-    TIPO_DB: process.env.TIPO_DB
+    TIPO_DB: process.env.TIPO_DB,
+    mongoUrl:'//diego:32882457@cluster0.dcufv.mongodb.net/DiegoDB?retryWrites=true&w=majority'
 }

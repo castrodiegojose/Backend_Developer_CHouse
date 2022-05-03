@@ -4,6 +4,7 @@ import config from '../config.js';
 
 
 const db = config.TIPO_DB || 'mongodb';
+console.log(db);
 // importconst url = 'mongodb://localhost:27017/mibase'
 
 let productoApi;
