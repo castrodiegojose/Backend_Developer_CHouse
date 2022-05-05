@@ -9,7 +9,10 @@ export default class UserService {
     async createUser(cant = 50){
         this.user = []
         for (let i = 0; i < Number(cant); i++) {
-            this.users.push(generateUser());
+            let user= generateUser();
+            user.id = i +1
+            this.users.push(user);
+            
         }
         this.lastId = cant;
         return this.users;
