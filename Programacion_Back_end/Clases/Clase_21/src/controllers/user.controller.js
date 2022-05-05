@@ -41,20 +41,21 @@ export default class UserController{
 
     async updateUser(req, res){
         const {id} = req.params;
-        const {user} = req.body;
+        const {body} = req;
         try{
-            await this.userService.updateUser(id, user)
-            res.status(200).json({user: user})
+            await this.userService.updateUser(id, body)
+            res.status(200).send("Usuario actualizado")
         }
-        catch{
-
+        catch (error){
+            res.status(500).json({error: error})
         }
     }
     async deleteUser(req, res){
         const {id} = req.params;
         try{
-            await this.userService.deleteUser(id)
-            return res.status(204).json({delete_object:id})
+            let respuesta =await this.userService.deleteUser(id)
+            console.log(respuesta)
+            res.status(200).send(respuesta)
         }
         catch (error){
             res.status(500).json({error: error})

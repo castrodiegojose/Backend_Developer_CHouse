@@ -27,7 +27,7 @@ export default class UserService {
 
     }
     async addUser() {
-        const user = createUser();
+        const user = generateUser();
         user.id = this.lastId + 1;
         this.lastId ++ ;
         this.users.push(user);
@@ -37,14 +37,18 @@ export default class UserService {
         if(this.users.length == 0 ) throw new Error("No hay usuarios");
         let index = null;
         try{
-            const user = this.users.filter((user, i) => {
+            let user = this.users.filter((user, i) => {
                 if(user.id == Number(id)){
                     index = i;
                     return user;
                 }
             })[0];
 
+            console.log(data)
+
             Object.assign(user, data);
+
+            console.log(user)
             this.users[index] = user;
         }
         catch(err){
@@ -57,9 +61,13 @@ export default class UserService {
     
         try{
             const index = await this.users.findIndex(user => user.id == Number(id));
-            if(index)this.users.splice(index, 1);
+            console.log(index)
+            if(index != -1){
+                this.users.splice(index, 1);
+                return (`usuario con id ${id} borrado`)
+            }
             else{
-                return {Error: "No existe el ID"}
+                return "No existe el ID"
             }
         }
         catch(err){
