@@ -9,26 +9,26 @@ routerProd.get('/:id?', async (req, res) => {
     if (id) {
         res.send(await productoApi.getById(id));
     } else {
-        res.status(200).json(await productoApi.getAll());
+        res.send(await productoApi.getAll());
     }
 })
 
 
-routerProd.post('/', auth, (req, res) => {
+routerProd.post('/', auth, async(req, res) => {
     const newProduct = req.body;
-    productoApi.save(newProduct);
+    await productoApi.save(newProduct);
     res.send({ 'Nuevo Producto agregado': newProduct });
 })
 
-routerProd.put('/:id', auth, (req, res) => {
+routerProd.put('/:id', auth, async (req, res) => {
     const  id = parseInt(req.params.id);
     const newprod = req.body;
-    res.send(productoApi.putUpload(id, newprod));
+    res.send(await productoApi.updateById(id, newprod));
 })
 
-routerProd.delete('/:id', auth, (req, res) => {
+routerProd.delete('/:id', auth, async (req, res) => {
     const id = parseInt(req.params.id);
-    res.send(productoApi.deleteById(id));
+    res.send(await productoApi.deleteById(id));
 });
 
 

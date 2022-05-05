@@ -1,13 +1,16 @@
 import express from 'express';
+import UserController from '../controllers/user.controller.js';
 
 export class UserRoute extends express.Router{
     constructor(){
         super();
-        // this.get('/', this.getUsers);
-        // this.get('/:id', this.getUser);
-        // this.post('/', this.createUser);
-        // this.put('/:id', this.updateUser);
-        // this.delete('/:id', this.deleteUser);
+        this.userController = new UserController(); 
+    
+        this.post('/popular', this.userController.createUser);
+        this.get('/:id?', this.userController.getUsers);
+        this.post('/', this.userController.addUser);
+        this.put('/:id', this.userController.updateUser);
+        this.delete('/:id', this.userController.deleteUser);
     }
 
 }

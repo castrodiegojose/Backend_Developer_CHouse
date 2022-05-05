@@ -85,7 +85,7 @@ export default class ContenedorMongo{
         async deleteAll(){
         
             try{
-                this.collection.deleteMany({});
+                await this.collection.deleteMany({});
             }
             catch(err){
                 throw new Error("ERROR AL ELIMINAR TODOS:", err);
@@ -95,7 +95,8 @@ export default class ContenedorMongo{
         async updateById(id, objeto){
 
             try{
-                this.collection.updateOne({_id: id}, objeto);
+                await this.collection.updateOne({_id: id}, objeto);
+                return {"se actualizo el elemento con el ID":id, "con los siguientes datos":objeto}
             }
             catch(err){
                 throw new Error("ERROR AL ACTUALIZAR EL ARCHIVO:", err);
