@@ -1,5 +1,10 @@
 const socket = io();
 
+/// logout ///
+
+const logout = document.getElementById("logout");
+//// romper session y mandar a login////
+
 /// form //
 const tabla = document.getElementById('tabla');
 const agregar = document.getElementById("agregar");
@@ -16,6 +21,10 @@ const author= document.getElementById('username');
 const text = document.getElementById('texto');
 const mensajechat = document.getElementById('no_mensaje')
 
+logout.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+})
 
 agregar.addEventListener('click', (e) =>{
     e.preventDefault();

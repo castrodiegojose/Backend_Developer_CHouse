@@ -3,7 +3,6 @@ const BaseMaria = require('./classDB.js')
 const express = require('express');
 const {Server: HttpServer} = require('http');
 const {Server: IOServer} = require('socket.io');
-
 const RandomCat = require('./classRandomCats.js')
 
 // const {mysqlOptions} = require('./options/mariaDB');
@@ -32,6 +31,10 @@ classMAria.createTable();
     
 
 // escucho si un cliente se conecta
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
 
 app.get('/', async (req, res) => {    
   
