@@ -1,5 +1,5 @@
 
-const mysqlOptions = {
+export const mysqlOptions = {
     client: "mysql",
         connection: {
             host: '127.0.0.1',
@@ -10,5 +10,5 @@ const mysqlOptions = {
         }
 }
 
-module.exports = {mysqlOptions}
+
 

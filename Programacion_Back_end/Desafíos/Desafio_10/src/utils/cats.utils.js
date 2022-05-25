@@ -1,4 +1,4 @@
-const {faker} = require('@faker-js/faker')
+import { faker } from '@faker-js/faker';
 
 async function generateCats(){
     return{
@@ -15,4 +15,4 @@ let prueba = generateCats();
 
 console.log(prueba);
 
-module.exports = generateCats;
+export default generateCats;

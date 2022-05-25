@@ -1,4 +1,4 @@
-const generateCats = require('./utils/cats.utils.js')
+import generateCats from './utils/cats.utils.js';
 
 class RandomCat{
     
@@ -18,4 +18,4 @@ class RandomCat{
     }
 }
 
-module.exports = RandomCat;
+export default RandomCat;

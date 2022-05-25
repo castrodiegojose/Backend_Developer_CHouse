@@ -1,9 +1,10 @@
-const {mysqlOptions} = require('./options/mariaDB.js');
-const {sqliteOptions} = require('./options/sqliteDB.js') 
+import {mysqlOptions} from './options/mariaDB.js';
+import {sqliteOptions} from './options/sqliteDB.js'; 
+import knex from 'knex';
 
 
-const knexMysql = require('knex')(mysqlOptions);
-const knexsqLite = require('knex')(sqliteOptions);
+const knexMysql = knex(mysqlOptions)
+const knexsqLite = knex(sqliteOptions);
 
 class BaseMaria {
 
@@ -96,4 +97,4 @@ class BaseMaria {
 
     }
 }
-module.exports = BaseMaria;
+export default BaseMaria;

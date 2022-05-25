@@ -1,14 +1,14 @@
 ///////////////// MODULOS ////////////////////
-const BaseMaria = require('./classDB.js')
-const express = require('express');
-const {Server: HttpServer} = require('http');
-const {Server: IOServer} = require('socket.io');
-const RandomCat = require('./classRandomCats.js')
-const cookieParser = require('cookie-parser')
-const session = require('express-session');
+import BaseMaria from './classDB.js';
+import express from 'express';
+import { Server as HttpServer } from 'http';
+import { Server as IOServer } from 'socket.io';
+import RandomCat from './classRandomCats.js';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import path from 'path'
 //---------- Persistencia por Mongo -----------//
-const connectMongo = require('connect-mongo');
-window={}
+import MongoStore from 'connect-mongo';
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -30,7 +30,7 @@ classMAria.createTable();
 //------- SESSION -----------//
 app.use(cookieParser())
 app.use(session({
-    store: connectMongo.create({
+    store: MongoStore.create({
         mongoUrl: 'mongodb+srv://diego:32882457@cluster0.dcufv.mongodb.net/DiegoDB?retryWrites=true&w=majority',
         ttl: 10}),
     secret: '1234567890!"#$%&/()=',
@@ -43,8 +43,8 @@ app.use(session({
     
 }))
 //------- MOTOR DE PLANTILLAS --------//
-app.use(express.static(__dirname + '/public'));
-app.set("views", __dirname + "/views")
+app.use(express.static("./public"));
+app.set("views", "./src/views");
 app.set("view engine", ".ejs");
 app.use(express.urlencoded({extended: true}));
 
