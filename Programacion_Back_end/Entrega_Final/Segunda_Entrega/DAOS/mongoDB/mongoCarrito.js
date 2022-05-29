@@ -9,76 +9,36 @@ export default class mongoCarrito extends contenedorMongo {
 
     async addPalC(num, objeto) {
         try {
-                   
-          
-
           this.array = await this.collection.find({_id: num});
-          //console.log(this.array);
-
           let newid = this.array[0].productos.length + 1;  
-          
-          //console.log(newid);
-            
-      
           objeto.timestamp = this.timestamp;  
           objeto._id = newid;        
-
-          //let newProductos = await this.array[0].productos.push(objeto);
-
-          //console.log(this.array[0].productos)
-
           console.log(objeto);
-
-          //let carritoUpdate = await this.collection.updateOne({_id:num},{$set:{productos: newProductos}});
           let carritoUpdate = await this.collection.updateOne({_id:num},{$push: {productos: objeto}});
-
           console.log(carritoUpdate);
-
-
-    
-          //this.array[carritoIndex]=carrito 
-         
-          
         } 
         catch (err) {
           console.error("ERROR AL ESCRIBIR EL ARCHIVO", err);
         }
       }
-
        
     async deletePById(id, id_prod) {
-
         this.array = await this.collection.find({_id: id});       
-
         const prodIndex = this.array.productos.findIndex(item => item.id === id_prod)
-
         const prod= this.array.productos.find(item => item.id === id_prod)
-        
         if(prod){
-
           this.array.productos.splice(prodIndex, 1)
-
           await this.collection.update({_id:id},{$set:{productos: this.array.productos}});
-        
           return ({
               'Se elimino del carrito': id,
               'el producto con el siguiente id': id_prod
           })
-
-
         }
-
         else{
-  
-        return ({
-            'En el carrito': id,
-            'El producto con el siguiente id no existe': id_prod
+          return ({
+              'En el carrito': id,
+              'El producto con el siguiente id no existe': id_prod
         })
-
       }
-    
-          
     }
-
-    
 }     
