@@ -11,8 +11,8 @@ async function generateCats(){
     }
 }
 
-let prueba = generateCats();
+// let prueba = generateCats();
 
-console.log(prueba);
+// console.log(prueba);
 
 export default generateCats;

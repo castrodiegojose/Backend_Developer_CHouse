@@ -6,11 +6,15 @@ import { Server as IOServer } from 'socket.io';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import path from 'path'
+import passport from 'passport';
+import flash from 'connect-flash'
+
 //---------- Persistencia por Mongo -----------//
 import MongoStore from 'connect-mongo';
 //---------- Modulos ------------------------//
 import {classMAria, classSqLite} from './classDB.js';
 import router from './routes/routes.js';
+
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -31,7 +35,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie:{
-         //maxAge:60000
         expires:60000
     }
 }))
@@ -40,13 +43,22 @@ app.use(express.static("./src/public"));
 app.set("views", "./src/views");
 app.set("view engine", ".ejs");
 app.use(express.urlencoded({extended: true}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
+app.use((req,res,next)=>{
+   app.locals.signupMessage = req.flash('signupMessage');
+   app.locals.loginMessage = req.flash('loginMessage');
+   next();
+})
 // ///////////////// RUTAS ////////////////////
 app.use('/', router)
 
 ///////////////// SERVER ////////////////////
 
-httpServer.listen(8080, function () {
+//------ Settings---------//
+httpServer.listen( 8080, function () {
     console.log('listening on port 8080');
 }); 
 

@@ -5,12 +5,17 @@
     <title>Login</title>
 </head>
 <body>
+    <%- include('./partials/alerts.ejs'); %> 
     <div class="container my-5">
         <div class="jumbotron">
             <h1>LOGIN</h1><br>
-            <form class="form" action="/login" method="post" role="form" autocomplete="off">
-                <div class="form-group"><input id="nombre" name='nombre' placeholder="nombre" class="form-control" type="text" required></div>
-                <div class="form-group"><input class="btn btn-success my-3" type="submit" value="Login"></div>
+            <form class="form" action="/login" method="post" role="form">
+                <div class="form-group">
+                    <input id="nombre" name='nombre' placeholder="nombre" class="form-control" type="text" required>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-success my-3" type="submit" value="Login">
+                </div>
             </form>           
         </div>
     </div>
