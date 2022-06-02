@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
-import {mongoUrl} from './options/keysMongo.js';
+import key from './options/keysMongo.js';
 
-mongoose.connect(mongoUrl, {userNewUrlParser: true})
-        .then (db => console.log('Mongo Atlas is connected ☁'))
+mongoose.connect(key.mongoUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+})
+        .then ((db) => console.log('Mongo Atlas is connected ☁'))
+        .catch (err => console.log(err));

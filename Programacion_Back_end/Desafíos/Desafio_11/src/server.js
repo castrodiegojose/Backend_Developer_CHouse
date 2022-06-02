@@ -8,6 +8,7 @@ import session from 'express-session';
 import path from 'path'
 import passport from 'passport';
 import flash from 'connect-flash'
+import './signupDB.js'
 
 //---------- Persistencia por Mongo -----------//
 import MongoStore from 'connect-mongo';

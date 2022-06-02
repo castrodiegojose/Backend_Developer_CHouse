@@ -1,6 +1,7 @@
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import User from '../models/user.model.js';
+import bcrypt from 'bcrypt';
 
 passport.serializeUser((user, done)=>{
     done(null, user.id);
@@ -11,13 +12,13 @@ passport.deserializeUser(async (id, done)=>{
 });
 
 
-passport.use('local-signup', new LocalStrategy({
+passport.use('signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
-    passReqToCallback: true
-}, async (req, email, password, done) => {
-        const user = await User.findOne({'email': email})
-    if (user) {
+    passReqToCallback: true,
+}, async (req, email, password, done) => {        
+        const userExist = await User.findOne({email: email})
+    if (userExist) {
         return done(null, false, req.flash('signupMessage', 'The Email is already taken.'));
     }
     else{
@@ -25,22 +26,29 @@ passport.use('local-signup', new LocalStrategy({
         newUser.email = email;
         newUser.password = newUser.encryptPassword(password);
         await newUser.save();
-        done(null, newUser)
+        return done(null, newUser)
     }
 }));
 
-passport.use('local-login', new LocalStrategy({
+passport.use('login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
-    passReqToCallback: true
+    passReqToCallback: true,
 }, async (req, email, password, done) => {
+    console.log("entro aca")
     
-    const user = await User.findOne({ email: email})
-    if (!user) {
+    const userExist = await User.findOne({email: email})
+    console.log(userExist)
+    if (!userExist) {
+        console.log("user desn't exist")
         return done(null, false, req.flash('loginMessage', 'No user found'));
     }
-    if(!user.comparePassword(password)){
+    const passOK = await bcrypt.compare(password, userExist.password)
+    console.log(passOK)
+    if(!passOK){
+        console.log("bad password")
         return done(null, false, req.flash('loginMessage', 'Password Incorrecta'));
     }
-    done(null,user)
+    
+    return done(null,userExist)
 }));
