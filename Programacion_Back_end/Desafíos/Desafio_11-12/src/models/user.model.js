@@ -14,6 +14,5 @@ userSchema.methods.encryptPassword = (password)=>{
 
 userSchema.methods.comparePassword = function() {
     return bcrypt.compareSync(password, bcrypt.genSaltSync(password, this.password))
-
 }
 export default mongoose.model('User', userSchema);

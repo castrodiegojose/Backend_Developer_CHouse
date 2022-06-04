@@ -5,14 +5,17 @@ import { Server as HttpServer } from 'http';
 import { Server as IOServer } from 'socket.io';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import path from 'path'
 import passport from 'passport';
 import flash from 'connect-flash'
-import './signupDB.js'
+import dotenv from 'dotenv';
+dotenv.config();
 
 //---------- Persistencia por Mongo -----------//
 import MongoStore from 'connect-mongo';
+
 //---------- Modulos ------------------------//
+import port from './options/env.js'
+import './signupDB.js'
 import {classMAria, classSqLite} from './classDB.js';
 import router from './routes/routes.js';
 
@@ -30,7 +33,7 @@ classMAria.createTable();
 app.use(cookieParser())
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://diego:32882457@cluster0.dcufv.mongodb.net/DiegoDB?retryWrites=true&w=majority',
+        mongoUrl:`mongodb+srv://${process.env.MONGOATLAS_USER}:${process.env.MONGOATLAS_PASS}@cluster0.dcufv.mongodb.net/${process.env.MONGOATLAS_DB}?retryWrites=true&w=majority`,
         ttl: 10}),
     secret: '1234567890!"#$%&/()=',
     resave: false,
@@ -58,9 +61,8 @@ app.use('/', router)
 
 ///////////////// SERVER ////////////////////
 
-//------ Settings---------//
-httpServer.listen( 8080, function () {
-    console.log('listening on port 8080');
+httpServer.listen( port, function () {
+    console.log(`listening on port ${port}`);
 }); 
 
 ///////////////// WEB SOCKET ////////////////////
