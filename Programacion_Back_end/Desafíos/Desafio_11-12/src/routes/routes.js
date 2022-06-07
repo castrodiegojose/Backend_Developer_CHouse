@@ -4,8 +4,6 @@ import {classRandom} from '../classRandomCats.js';
 import passport from 'passport';
 import "../passport/local-auth.js"
 
-
-
 const router = express.Router();
 
 //----------- AUTENTICADOR --------------//

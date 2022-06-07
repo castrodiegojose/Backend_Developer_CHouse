@@ -1,8 +1,7 @@
 
 // const min = 1;
-// const max = 20;
+// const max = 1001;
 
-// //let num =  Math.random() * (max - min) + min;
 // let obj ={} 
 // let count = 0;
 

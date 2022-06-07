@@ -36,7 +36,6 @@ class BaseMaria {
              })
              .catch(err => {console.log(err);})
          return productos;          
-         
      } 
     
     guardarProducto(prod){
