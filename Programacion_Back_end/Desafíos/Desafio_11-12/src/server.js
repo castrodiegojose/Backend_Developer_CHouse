@@ -46,6 +46,8 @@ app.use(session({
 app.use(express.static("./src/public"));
 app.set("views", "./src/views");
 app.set("view engine", ".ejs");
+
+
 app.use(express.urlencoded({extended: true}));
 app.use(flash());
 app.use(passport.initialize());

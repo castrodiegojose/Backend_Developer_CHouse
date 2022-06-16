@@ -19,7 +19,7 @@ router.get('/info', (req, res) => {
 
 ////////////FUNCIONA//////////////
 router.get('/api/randoms', async (req, res)=>{
-    const cant = req.query.cant
+    const cant = parseInt(req.query.cant)
     const forked = fork("child_random.js")
     forked.on('message', msg => {
         if (msg =='listo'){
