@@ -11,7 +11,7 @@ const numCpu = cpus().length
 
 if(modo=="FORK"){
     app.use('/', router);
-    app.listen(8080, function() {console.log("Servidor puerto 8080")})
+    app.listen(8082, function() {console.log("Servidor puerto 8082")})
 }else{
     
     app.get('/api/randoms', (req, res)=>{
@@ -31,6 +31,6 @@ if(modo=="FORK"){
             cluster.fork();
         });
     }else{
-        app.listen(8080, function() {console.log(`Servidor ${process.pid} puerto 8080`)})
+        app.listen(8082, function() {console.log(`Servidor ${process.pid} puerto 8081`)})
     }
 }

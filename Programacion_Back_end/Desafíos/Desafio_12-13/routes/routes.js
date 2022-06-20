@@ -4,6 +4,7 @@ const router = express.Router()
 import { cpus } from 'node:os';
 //import modo from '../options/env.js'
 //import forking from '../modos/fork_father.js'
+//const PORT = parseInt(process.argv[2]) || 8080
 
 router.get('/info', (req, res) => {
     res.send({
@@ -13,7 +14,8 @@ router.get('/info', (req, res) => {
         Uso_Memoria: process.memoryUsage(),
         Path: process.cwd(),
         Process_ID:process.pid,
-        CPUs: cpus().length
+        CPUs: cpus().length,
+        Puerto: PORT
     })
 })
 
