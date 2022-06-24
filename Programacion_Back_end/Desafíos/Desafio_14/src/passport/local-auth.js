@@ -2,7 +2,7 @@ import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import User from '../models/user.model.js';
 import bcrypt from 'bcrypt';
-import {logger, loggErrorFile,loggWarningFile} from '../utils/logger.js'
+import {logger, loggWarningFile} from '../utils/logger.js'
 
 passport.serializeUser((user, done)=>{
     done(null, user.id);

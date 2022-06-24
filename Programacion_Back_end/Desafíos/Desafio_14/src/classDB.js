@@ -1,6 +1,7 @@
 import {mysqlOptions} from './options/mariaDB.js';
 import {sqliteOptions} from './options/sqliteDB.js'; 
 import knex from 'knex';
+import {logger, loggErrorFile} from './utils/logger.js'
 
 
 const knexMysql = knex(mysqlOptions)
@@ -18,11 +19,11 @@ class BaseMaria {
                     table.integer('precio');
                     table.string('foto');
                 }) 
-                .then(() => console.log('tabla creada'))
-                .catch(err => {console.log(err); throw err})
+                .then(() => logger.info('tabla creada'))
+                .catch(err => {loggErrorFile.error(err); throw err})
             }
             else{
-                console.log('la tabla productos ya existe');
+                logger.info('la tabla productos ya existe');
                 }
         })
     }
@@ -34,14 +35,14 @@ class BaseMaria {
              .then((rows)=>{
                  productos=rows;
              })
-             .catch(err => {console.log(err);})
+             .catch(err => {loggErrorFile.error(err);})
          return productos;          
      } 
     
     guardarProducto(prod){
         knexMysql('productos').insert(prod)
-            .then(() => console.log('productos agregados'))
-            .catch(err => {console.log(err); throw err})
+            .then(() => logger.info('productos agregados'))
+            .catch(err => {loggErrorFile.error(err); throw err})
     }
 
     async createTableMsj(){            
@@ -53,11 +54,11 @@ class BaseMaria {
                     table.string('author');
                     table.string('text');
                 }) 
-                .then(() => console.log('tabla mensajes creada'))
-                .catch(err => {console.log(err); throw err})
+                .then(() => logger.info('tabla mensajes creada'))
+                .catch(err => {loggErrorFile.error(err); throw err})
             }
             else{
-                console.log('la tabla mensajes ya existe');
+                logger.info('la tabla mensajes ya existe');
                 }
         })
     }
@@ -69,13 +70,13 @@ class BaseMaria {
              .then((rows)=>{
                 mensajes=rows;
              })
-             .catch(err => {console.log(err);})
+             .catch(err => {loggErrorFile.error(err);})
          return mensajes;          
      } 
      guardarMensaje(msj){
         knexsqLite('mensajes').insert(msj)
-            .then(() => console.log('mensajes agregados'))
-            .catch(err => {console.log(err); throw err})
+            .then(() => logger.info('mensajes agregados'))
+            .catch(err => {loggErrorFile.error(err); throw err})
     }
 }
 const classMAria = new BaseMaria();

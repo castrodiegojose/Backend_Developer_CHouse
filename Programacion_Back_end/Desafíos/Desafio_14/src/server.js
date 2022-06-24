@@ -18,6 +18,7 @@ import port from './options/env.js'
 import './signupDB.js'
 import {classMAria, classSqLite} from './classDB.js';
 import router from './routes/routes.js';
+import { logger} from './utils/logger.js';
 
 
 
@@ -65,13 +66,13 @@ app.use('/', router)
 ///////////////// SERVER ////////////////////
 
 httpServer.listen( port, function () {
-    console.log(`listening on port ${port}`);
+    logger.info(`listening on port ${port}`);
 }); 
 
 ///////////////// WEB SOCKET ////////////////////
 
 io.on('connection', socket => {
-    console.log(`Un cliente se ha conectado:${socket.id.substring(0,4)}`);
+    logger.info(`Un cliente se ha conectado:${socket.id.substring(0,4)}`);
     let productos=[];
     socket.on('new-product', async (data) => {
         classMAria.guardarProducto(data)
