@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router()
 import {counter} from '../options/function_counter.js'
+import { cpus } from 'node:os';
 
 const PORT = parseInt(process.argv[2]) || 8080
 
