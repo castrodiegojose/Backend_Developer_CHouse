@@ -8,6 +8,7 @@ import session from 'express-session';
 import passport from 'passport';
 import flash from 'connect-flash'
 import dotenv from 'dotenv';
+import compression from 'compression';
 dotenv.config();
 
 //---------- Persistencia por Mongo -----------//
@@ -51,9 +52,13 @@ app.set("view engine", ".ejs");
 
 
 app.use(express.urlencoded({extended: true}));
+//------- FLASH --------//
 app.use(flash());
+//------- PASSPORT --------//
 app.use(passport.initialize());
 app.use(passport.session());
+//------- COMPRESSION --------//
+app.use(compression());
 
 app.use((req,res,next)=>{
    app.locals.signupMessage = req.flash('signupMessage');
