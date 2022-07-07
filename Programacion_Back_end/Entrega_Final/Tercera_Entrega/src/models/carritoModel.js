@@ -11,12 +11,15 @@ const carritoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    userMail:{
+        type: String,
+        required: true
+    },
     _id: {
         type:Number,
         required: true
     }
 })
-
 const CarritoModel = mongoose.model(carritosCollection, carritoSchema);
+export default CarritoModel;
 
-export default CarritoModel

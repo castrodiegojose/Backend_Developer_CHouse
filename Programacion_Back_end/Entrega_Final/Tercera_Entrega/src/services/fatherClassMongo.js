@@ -1,18 +1,10 @@
-import mongoose from 'mongoose';
-import config from '../config.js'; 
-
-try {
-    mongoose.connect(config.mongoUrl,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-    });
-    console.log('Conectado a MongoDB');
-    } catch (error) { console.log(error); }
+//import {logger, loggErrorFile} from '../utils/logger.js'
 
 export default class ContenedorMongo{
     constructor(collection){
         this.collection =collection;
         this.array= [];
+        this.arrayP=[]
         this.timestamp = `${(new Date()).toLocaleDateString()} - ${(new Date()).toLocaleTimeString()}`;
     }
 
@@ -28,7 +20,7 @@ export default class ContenedorMongo{
         try{  
             console.log("entro al getbyid")
             this.array = await this.collection.find({_id: num});
-            console.log(this.collection.find({_id: num}));
+            console.log(this.array);
 
             if (this.array != []) return this.array;    
         
@@ -39,13 +31,16 @@ export default class ContenedorMongo{
         }
     }
 
-    async save(objeto){
+    async saveInCollection(objeto){
         try {
+            console.log(objeto)
             this.array = await this.collection.find();
-            let newid = this.array.length + 1;            
+            let newid = this.array.length + 1;
+
             objeto.timestamp = this.timestamp;
             objeto._id = newid;
             let newproducto = new this.collection(objeto);
+            console.log(newproducto)
             await newproducto.save();
         } 
         catch (err) {

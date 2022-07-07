@@ -1,7 +1,7 @@
-import contenedorMongo from '../../contenedores/contenedorMongo.js';
+import ContenedorMongo from '../../contenedores/contenedorMongo.js';
 import CarritoModel from '../../models/carritoModel.js';
 
-export default class mongoCarrito extends contenedorMongo {
+export default class mongoCarrito extends ContenedorMongo {
 
     constructor(){
         super(CarritoModel);
