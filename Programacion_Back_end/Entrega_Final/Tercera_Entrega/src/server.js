@@ -90,10 +90,10 @@ io.on('connection', socket => {
         catch(err){loggErrorFile.error(err);}
     });
 
-    socket.on('new-prod-carrito', async (newProductCarrito) => {
+    socket.on('new-prod-carrito', async (newProductCarrito, mail) => {
         try{
-            await carritoApi.addPalC("1",newProductCarrito);
-            carrito = await carritoApi.getById("1")
+            await carritoApi.addPalC(mail,newProductCarrito);
+            carrito = await carritoApi.getCarritoById(mail)
             console.log(carrito)
             io.sockets.emit('carrito-refresh', carrito);
         }

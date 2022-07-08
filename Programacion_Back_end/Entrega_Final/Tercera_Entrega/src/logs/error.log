@@ -335,3 +335,19 @@
     at Socket.emitUntyped (C:\Users\exa82457\Documents\Documentos personales\Coderhouse\Desarrollador back end\Programacion_Back_end\Entrega_Final\Tercera_Entrega\node_modules\socket.io\dist\typed-events.js:69:22)
     at C:\Users\exa82457\Documents\Documentos personales\Coderhouse\Desarrollador back end\Programacion_Back_end\Entrega_Final\Tercera_Entrega\node_modules\socket.io\dist\socket.js:465:39
     at processTicksAndRejections (node:internal/process/task_queues:78:11)
+[2022-07-07T20:12:41.739] [ERROR] errorArchivo - Error: ERROR AL ENLISTAR POR ID:
+    at mongoCarrito.getById (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/services/fatherClassMongo.js:30:19)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Socket.<anonymous> (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/server.js:96:23)
+[2022-07-07T20:14:56.156] [ERROR] errorArchivo - Error: ERROR AL ENLISTAR POR ID:
+    at mongoCarrito.getById (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/services/fatherClassMongo.js:30:19)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Socket.<anonymous> (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/server.js:96:23)
+[2022-07-07T20:18:11.545] [ERROR] errorArchivo - Error: ERROR AL ENLISTAR POR ID:
+    at mongoCarrito.getCarritoById (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/services/mongoCarrito.js:21:17)
+    at Socket.<anonymous> (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/server.js:96:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[2022-07-07T20:20:03.785] [ERROR] errorArchivo - Error: ERROR AL ENLISTAR POR ID:
+    at mongoCarrito.getCarritoById (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/services/mongoCarrito.js:21:17)
+    at Socket.<anonymous> (file:///C:/Users/exa82457/Documents/Documentos%20personales/Coderhouse/Desarrollador%20back%20end/Programacion_Back_end/Entrega_Final/Tercera_Entrega/src/server.js:96:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)

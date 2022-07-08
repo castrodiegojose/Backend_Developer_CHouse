@@ -10,14 +10,15 @@ class UI {
             const nombre= elementoPadre.querySelector('td#nombre').textContent
             const precio= elementoPadre.querySelector('td#precio').textContent
             const thumbnail = elementoPadre.querySelector('td#thumbnail').querySelector('img').src
-            
+            const mail = emailUser.textContent
+
             let newProductCarrito = { 
             nombre: nombre,
             precio: precio, 
             thumbnail: thumbnail
         }
         
-        return newProductCarrito
+        return {newProductCarrito , mail}
     }
     else{console.log("el elemento no existe")}
 }
@@ -26,9 +27,10 @@ eliminar(element){
     if (element.name ==='eliminarProdCarrito'){
         const elementoPadre = element.parentElement.parentElement
         const id = elementoPadre.querySelector('td#_id').textContent
+        const mail = emailUser.textContent
         elementoPadre.remove()
         console.log(id)
-        return id
+        return {id, mail}
     }
     
 }
@@ -45,6 +47,8 @@ const descripcion = document.getElementById("descripcion")
 const codigo = document.getElementById("codigo")
 const stock = document.getElementById("stock")
 const mensajeProd = document.getElementById("no hay datos");
+const emailUser = document.getElementById("emailUser")
+
 
 /// modificar para carrito ///
 const carritoTabla = document.getElementById("Carritotabla");
@@ -59,7 +63,7 @@ document.getElementById("tabla")
         const ui = new UI();
         newProductCarrito = ui.agregarProdCarrito(e.target)
         console.log("new prod carrito:", newProductCarrito);
-        socket.emit('new-prod-carrito', newProductCarrito);
+        socket.emit('new-prod-carrito', newProductCarrito.newProductCarrito, newProductCarrito.mail);
           
         e.preventDefault();
     })

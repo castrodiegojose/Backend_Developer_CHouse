@@ -7,6 +7,21 @@ class mongoCarrito extends ContenedorMongo {
         super(CarritoModel);
     }
 
+    async getCarritoById(mail){ 
+      try{  
+          console.log("entro al getCarritobyid")
+          this.array = await this.collection.find({userMail: mail});
+          console.log(this.array);
+
+          if (this.array != []) return this.array;    
+      
+          return {Error:'No existe el ID'}
+      }
+      catch(err){
+          throw new Error("ERROR AL ENLISTAR POR ID:", err);
+      }
+    }
+
     async testCarritoExist(email){
       this.array = await this.collection.find({userMail: email});
           console.log("ARRAY!!!", this.array)
@@ -15,6 +30,7 @@ class mongoCarrito extends ContenedorMongo {
 
           let cantidadCarrito = await this.collection.find()
           console.log("entro en el if")
+          let arrayCarritos = []
           const primerCarrito = {productos:[]}
           primerCarrito.userMail = email
 
@@ -26,9 +42,9 @@ class mongoCarrito extends ContenedorMongo {
           //const primerCarrito = new this.collection([], this.timestamp,email,newid)
                       
           // primerCarrito.productos.push(objeto)
-
+          arrayCarritos.push(primerCarrito)
           await this.saveInCollection(primerCarrito)
-          return primerCarrito
+          return arrayCarritos
         //   await this.saveInCollection(primerCarrito);
           
         //   console.log("primer carrito creado")
@@ -38,9 +54,9 @@ class mongoCarrito extends ContenedorMongo {
         }
     }
 
-    async addPalC(num, objeto) {
+    async addPalC(mail, objeto) {
         try {
-          this.array = await this.collection.find({_id: num});
+          this.array = await this.collection.find({userMail: mail});
           console.log("ARRAY!!!", this.array)
           // if(this.array = []){
           //   console.log("entro en el if")
@@ -65,7 +81,7 @@ class mongoCarrito extends ContenedorMongo {
             objeto.timestamp = this.timestamp;  
             objeto._id = newid;        
             //console.log(objeto);
-            let carritoUpdate = await this.collection.updateOne({_id:num},{$push: {productos: objeto}});
+            let carritoUpdate = await this.collection.updateOne({userMail: mail},{$push: {productos: objeto}});
             console.log("Se actualizo el carrito", carritoUpdate);
           
         } 

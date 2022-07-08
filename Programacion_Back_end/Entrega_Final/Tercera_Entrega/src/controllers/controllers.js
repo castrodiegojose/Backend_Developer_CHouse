@@ -11,7 +11,7 @@ controller.indexGet = async (req, res) => {
     //await carritoApi.primerCarrito(user)
     const productos = await productosApi.getAll()
     const carrito = await carritoApi.testCarritoExist(user)
-    console.log(carrito[0])
+    console.log("este es el elemento", carrito)
     res.render('index', {productos, carrito, user})    
 }
 
